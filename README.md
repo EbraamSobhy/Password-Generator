@@ -46,7 +46,7 @@ cargo run
 ## Example Output
 
 ```
-Your Password: A9!kP2@xL0z#QmT1
+Your Password: (password)
 ```
 
 ## Notes
