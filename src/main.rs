@@ -8,22 +8,23 @@ fn main() {
     }
 
     let uppercase = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
     let lowercase = b"abcdefghijklmnopqrstuvwxyz";
-
     let numbers = b"0123456789";
-
     let special = b"!@#$%^&*()_+-=[]{}|;:,.<>?";
 
     let mut all = Vec::new();
-
     all.extend_from_slice(uppercase);
     all.extend_from_slice(lowercase);
     all.extend_from_slice(numbers);
     all.extend_from_slice(special);
 
-    let length = 16;
+    println!("Password Generator");
+    println!("Enter the length of the password:");
 
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+
+    let length: usize = input.trim().parse().unwrap_or(16);
     let mut rng = rand::rng();
 
     let mut password = vec![
@@ -39,11 +40,7 @@ fn main() {
 
     password.shuffle(&mut rng);
 
-    let mut password: String = password.into_iter().collect();
+    let password: String = password.into_iter().collect();
 
-    println!("Password Generator Enter the length of the password");
-
-    io::stdin().read_line(&mut password).unwrap();
-
-    println!("Your Password: {}", password.trim());
+    println!("Your Password: {}", password);
 }
